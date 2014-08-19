@@ -1,0 +1,32 @@
+{
+    "name": "<%=name%>",
+    "version": "1.0.0",
+    "description": "this is my yo generator",
+    "main": "view/index.html",
+    "author": {
+        "name": "<%= author %>",
+        "email": "<%= email %>"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "connect-livereload": "^0.4.0",
+        "grunt-autoprefixer": "^1.0.0",
+        "grunt-connect-proxy": "^0.1.10",
+        "grunt-contrib-clean": "~0.5.0",
+        <% if (style.indexOf('scss') > -1) { %>
+        "grunt-contrib-compass": "^0.9.1",
+        <% } %>
+        "grunt-contrib-connect": "^0.8.0",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-cssmin": "~0.7.0",
+        <% if (style.indexOf('less') > -1) { %>
+        "grunt-contrib-less": "~0.8.2",
+        <% } %>
+        "grunt-contrib-uglify": "~0.2.7",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-ejs": "^0.2.0",
+        "grunt-kmc": "~0.1.18",
+        "grunt-replace": "^0.7.8",
+        "load-grunt-tasks": "^0.6.0"
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>开发阶段demo</title>
+    <meta charset="UTF-8">
+    <% if (mini == 'Y') { %> 
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no;address=no;email=no" />
+    <meta name="mobileOptimized" content="width" />
+    <meta name="handheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 引入seed -->
+    <script src="http://g.tbcdn.cn/kissy/m/0.2.0/mini-full-min.js"></script>
+    <% } else { %> 
+    <!-- 引入seed -->
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.2/??seed-min.js,import-style-min.js" data-config="{combine:true}"></script>
+    <% } %>
+
+    <!-- 配置模块 -->
+    <script>
+        KISSY.config({
+            packages: [
+                {
+                    name: '<%=name%>',
+                    base: '../src',
+                    ignorePackageNameInUri: true,
+                    debug: true,
+                    combine:false
+                }
+            ]}
+        );
+    </script>
+
+
+    <!--引入样式-->
+    <script>
+        KISSY.importStyle('<%=name%>/index.css');
+    </script>
+</head>
+<body>
+
+<header>
+
+</header>
+
+<article>
+
+</article>
+
+<!--初始化脚本-->
+<script>
+    KISSY.use('<%=name%>/index');
+</script>
+</body>
+</html>
