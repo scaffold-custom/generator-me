@@ -37,7 +37,7 @@ var MeGenerator = yeoman.generators.Base.extend({
             name: 'email',
             message: 'email of author',
             default: 'luxueyan.lxy@alibaba-inc.com'
-        }, 
+        },
         {
             name: 'combo',
             message: '是否使用依赖表combo文件（Y/N）:',
@@ -88,6 +88,7 @@ var MeGenerator = yeoman.generators.Base.extend({
             this.copy('src/index.less', 'src/less/index.less');
         } else if (this.style.indexOf('scss') > -1) {
             this.copy('src/index.scss', 'src/scss/index.scss');
+            this.copy('config.rb', 'config.rb');
         }
         this.copy('src/mods/header.js', 'src/mods/header.js');
         this.copy('src/mods/article.js', 'src/mods/article.js');

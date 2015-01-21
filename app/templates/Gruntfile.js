@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt, {pattern: ['grunt-*', 'connect-livereload']});
     grunt.initConfig({
         // 指定打包目录
         buildBase: 'build',
@@ -221,10 +221,17 @@ module.exports = function(grunt) {
                 files: ['<%%= tmplBase %>/**/*.ejs'],
                 tasks: ['ejs']
             },
+            <% if (style.indexOf('scss') > -1) { %>
             compass: {
-                files: ['<%%= srcBase %>/**/*.scss'],
-                tasks: ['compass']
+                files: [ '<%%= srcBase %>/**/*.scss' ],
+                tasks: [ 'compass' ]
             },
+            <% } else { %>
+            less: {
+                files: [ '<%%= srcBase %>/**/*.less' ],
+                tasks: [ 'less' ]
+            },
+            <% } %>
             autoprefixer: {
                 files: ['<%%= srcBase %>/**/*.css'],
                 tasks: ['autoprefixer']
@@ -289,6 +296,6 @@ module.exports = function(grunt) {
     var defaultTasks = ['clean',<% if (style.indexOf('scss') > -1) { %>'compass:dev' <% } else { %> 'less:dev' <% } %> , 'autoprefixer', 'ejs', 'copy:all', 'cssmin', 'kmc:main', 'replace', 'uglify:build'];
     grunt.registerTask('default', addTimerTask(defaultTasks));
     grunt.registerTask('dev', ['watch']);
-    grunt.registerTask('live', ['connect', 'watch:livereload']);
+    grunt.registerTask('live', ['php']);
 
 };
